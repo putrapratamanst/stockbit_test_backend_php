@@ -2,15 +2,13 @@
 
 function findFirstStringInBracket($str)
 {
-    $response = "";
-    if (strlen($str) > 3) {
-        preg_match('#\((.*?)\)#', $str, $match);
-        $stringOutsideBracked = $match[1];
-        $array    = explode(" ", $stringOutsideBracked);
-        $response = reset($array);
-    }
+    preg_match('#\((.*?)\)#', $str, $match);
+    if(strlen($str) < 3 || $match == NULL)
+        return json_encode("");
 
-    return json_encode($response);
+    $stringOutsideBracked = $match[1];
+    $array    = explode(" ", $stringOutsideBracked);
+    return json_encode(reset($array));
 }
 
-echo findFirstStringInBracket("o(nly) get data in bracket");
+echo findFirstStringInBracket("asfasd(ssd sd )");
