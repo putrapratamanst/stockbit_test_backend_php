@@ -14,4 +14,4 @@ function findFirstStringInBracket($str)
     return $response;
 }
 
-echo findFirstStringInBracket("()");
+echo findFirstStringInBracket("get (data) only on bracket");
