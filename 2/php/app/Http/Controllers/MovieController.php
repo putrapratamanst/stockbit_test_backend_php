@@ -42,7 +42,7 @@ class MovieController extends Controller
 
     public function detail($imdbId)
     {
-        //hit omdb search
+        //hit omdb detail
         $data = $this->api->omdbDetail($imdbId);
         return response()->json([
             'status'  => "success",
