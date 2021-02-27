@@ -20,4 +20,16 @@ class ApiController extends Controller
         ]);
         return $response;
     }
+
+    public function omdbDetail($imdbId)
+    {
+        $endpoint = env('OMDBURL')."?apikey=".env('OMDBKEY')."&i={$imdbId}";
+        $api      = Http::get($endpoint);
+        $response = $api->json();
+        $this->saveLog([
+            'url'      => $endpoint,
+            'response' => serialize($response),
+        ]);
+        return $response;
+    }
 }
