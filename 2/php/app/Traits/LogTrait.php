@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Models\Log;
+use App\Models\Log; 
 use Illuminate\Support\Carbon;
 
 trait LogTrait
