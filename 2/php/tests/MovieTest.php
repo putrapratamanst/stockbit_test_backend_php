@@ -20,4 +20,15 @@ class MovieTest extends TestCase
             'message',
         ]);
     }
+
+    public function testMovieDetail()
+    {
+        $test = $this->get("movie/1");
+        $test->assertResponseOk();
+        $test->seeJsonStructure([
+            'status',
+            'code',
+            'message',
+        ]);
+    }
 }
