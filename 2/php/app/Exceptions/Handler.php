@@ -47,8 +47,21 @@ class Handler extends ExceptionHandler
      *
      * @throws \Throwable
      */
-    public function render($request, Throwable $exception)
+    public function render($request, Throwable $e)
     {
-        return parent::render($request, $exception);
+        $rendered   = parent::render($request, $e);
+        $message    = $e->getMessage();
+        $statusCode = $rendered->getStatusCode();
+
+        if ($e instanceof MethodNotAllowedHttpException) {
+            $message  = "Method Tidak Diizinkan";
+        } elseif ($e instanceof NotFoundHttpException) {
+            $message  = "URL Tidak Ditemukan";
+        } 
+        return response()->json([
+            'status'  => "failed",
+            'code'    => 0,
+            'message' => $message,
+        ], $statusCode);    
     }
 }
