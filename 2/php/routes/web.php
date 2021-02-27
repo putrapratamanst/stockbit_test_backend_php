@@ -16,3 +16,9 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'movie'], function () use ($router) {
+    $router->get('search', 'MovieController@search');
+    $router->get('{id}', 'MovieController@detail');
+});
+
