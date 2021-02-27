@@ -19,6 +19,6 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'movie'], function () use ($router) {
     $router->get('search', 'MovieController@search');
-    $router->get('{id}', 'MovieController@detail');
+    $router->get('{imdbId}', 'MovieController@detail');
 });
 
